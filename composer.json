@@ -1,0 +1,15 @@
+{
+    "name": "themroc/yii2-bugsnag",
+    "description": "A better Yii2 Bugsnag implementation",
+    "type": "extension",
+    "version": "1.0.0",
+    "autoload": {
+        "psr-4": {
+            "themroc\\yii2bugsnag\\": "src/"
+        }
+    },
+    "require": {
+        "bugsnag/bugsnag": "~3.5",
+        "yiisoft/yii2": "~2.0.0"
+    }
+}
