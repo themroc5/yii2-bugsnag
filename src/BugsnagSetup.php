@@ -11,11 +11,16 @@ class BugsnagSetup extends Component
     public $endpoint;
     public $sendWarnings = false;
     public $except = [];
+    public $identityClass;
 
     public function init()
     {
         if (empty($this->apiKey)) {
             throw new \Exception('API Key required!');
+        }
+
+        if (empty($this->identityClass)) {
+            throw new \Exception('Identity class required!');
         }
     }
 
@@ -27,6 +32,7 @@ class BugsnagSetup extends Component
             'stage' => $this->stage,
             'endpoint' => $this->endpoint,
             'sendWarnings' => $this->sendWarnings,
+            'identityClass' => $this->identityClass,
         ];
 
         $yiiConfig['components']['bugsnag'] = $config;
