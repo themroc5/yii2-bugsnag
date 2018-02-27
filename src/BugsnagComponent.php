@@ -16,6 +16,7 @@ class BugsnagComponent extends Component
     public $messages = [];
     public $endpoint;
     public $sendWarnings;
+    public $identityClass;
 
     public $inException = false;
 
@@ -102,11 +103,11 @@ class BugsnagComponent extends Component
 
     public function attachMeta(Report $report)
     {
-        if (!\Yii::$app->user->isGuest) {
+        if (!$this->identityClass->isGuest) {
             /** @var ActiveRecord $user */
-            $user = \Yii::$app->user->identity;
+            $user = $this->identityClass->identity;
             if ($user) {
-                $report->setUser(\Yii::$app->user->identity->toArray());
+                $report->setUser($this->identityClass->identity->toArray());
             }
         }
 
